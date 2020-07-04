@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		4E4F638F24AC087C002A5C1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F638E24AC087C002A5C1A /* AppDelegate.swift */; };
 		4E4F639124AC087C002A5C1A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F639024AC087C002A5C1A /* SceneDelegate.swift */; };
-		4E4F639324AC087C002A5C1A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F639224AC087C002A5C1A /* ViewController.swift */; };
+		4E4F639324AC087C002A5C1A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F639224AC087C002A5C1A /* MainViewController.swift */; };
 		4E4F639624AC087C002A5C1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E4F639424AC087C002A5C1A /* Main.storyboard */; };
 		4E4F639824AC087D002A5C1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E4F639724AC087D002A5C1A /* Assets.xcassets */; };
 		4E4F639B24AC087D002A5C1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E4F639924AC087D002A5C1A /* LaunchScreen.storyboard */; };
@@ -17,8 +17,10 @@
 		4ED489DE24AF710600C81ACE /* SurveillanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED489DD24AF710600C81ACE /* SurveillanceManager.swift */; };
 		4ED489E024AF717000C81ACE /* DeviceTrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED489DF24AF717000C81ACE /* DeviceTrackingManager.swift */; };
 		4ED489E824AF74D500C81ACE /* DeviceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED489E724AF74D500C81ACE /* DeviceTests.swift */; };
-		4ED489F024AF869300C81ACE /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED489EF24AF869300C81ACE /* Logger.swift */; };
-		4ED489F224AF90B300C81ACE /* LoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED489F124AF90B300C81ACE /* LoggerTests.swift */; };
+		4ED489F024AF869300C81ACE /* LogFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED489EF24AF869300C81ACE /* LogFileManager.swift */; };
+		4ED489F224AF90B300C81ACE /* LogFileManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED489F124AF90B300C81ACE /* LogFileManagerTests.swift */; };
+		4EF1183224B0C50E002D8D0E /* LogFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1183124B0C50E002D8D0E /* LogFileViewController.swift */; };
+		4EF1183424B0EA90002D8D0E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1183324B0EA90002D8D0E /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +37,7 @@
 		4E4F638B24AC087C002A5C1A /* RSSISniffer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSISniffer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E4F638E24AC087C002A5C1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E4F639024AC087C002A5C1A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4E4F639224AC087C002A5C1A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4E4F639224AC087C002A5C1A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4E4F639524AC087C002A5C1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4E4F639724AC087D002A5C1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E4F639A24AC087D002A5C1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,8 +49,10 @@
 		4ED489E524AF74D500C81ACE /* RSSISnifferTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSSISnifferTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ED489E724AF74D500C81ACE /* DeviceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTests.swift; sourceTree = "<group>"; };
 		4ED489E924AF74D500C81ACE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4ED489EF24AF869300C81ACE /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		4ED489F124AF90B300C81ACE /* LoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerTests.swift; sourceTree = "<group>"; };
+		4ED489EF24AF869300C81ACE /* LogFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFileManager.swift; sourceTree = "<group>"; };
+		4ED489F124AF90B300C81ACE /* LogFileManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFileManagerTests.swift; sourceTree = "<group>"; };
+		4EF1183124B0C50E002D8D0E /* LogFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFileViewController.swift; sourceTree = "<group>"; };
+		4EF1183324B0EA90002D8D0E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,11 +97,13 @@
 			children = (
 				4E4F638E24AC087C002A5C1A /* AppDelegate.swift */,
 				4E4F639024AC087C002A5C1A /* SceneDelegate.swift */,
-				4E4F639224AC087C002A5C1A /* ViewController.swift */,
+				4EF1183324B0EA90002D8D0E /* Constants.swift */,
+				4E4F639224AC087C002A5C1A /* MainViewController.swift */,
+				4ED489EF24AF869300C81ACE /* LogFileManager.swift */,
+				4EF1183124B0C50E002D8D0E /* LogFileViewController.swift */,
 				4ED489DD24AF710600C81ACE /* SurveillanceManager.swift */,
 				4ED489DF24AF717000C81ACE /* DeviceTrackingManager.swift */,
 				4ED489DB24AF70D800C81ACE /* Device.swift */,
-				4ED489EF24AF869300C81ACE /* Logger.swift */,
 				4E4F639424AC087C002A5C1A /* Main.storyboard */,
 				4E4F639724AC087D002A5C1A /* Assets.xcassets */,
 				4E4F639924AC087D002A5C1A /* LaunchScreen.storyboard */,
@@ -110,7 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				4ED489E724AF74D500C81ACE /* DeviceTests.swift */,
-				4ED489F124AF90B300C81ACE /* LoggerTests.swift */,
+				4ED489F124AF90B300C81ACE /* LogFileManagerTests.swift */,
 				4ED489E924AF74D500C81ACE /* Info.plist */,
 			);
 			path = RSSISnifferTests;
@@ -217,13 +223,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E4F639324AC087C002A5C1A /* ViewController.swift in Sources */,
+				4E4F639324AC087C002A5C1A /* MainViewController.swift in Sources */,
 				4E4F638F24AC087C002A5C1A /* AppDelegate.swift in Sources */,
 				4ED489E024AF717000C81ACE /* DeviceTrackingManager.swift in Sources */,
 				4ED489DC24AF70D800C81ACE /* Device.swift in Sources */,
-				4ED489F024AF869300C81ACE /* Logger.swift in Sources */,
+				4ED489F024AF869300C81ACE /* LogFileManager.swift in Sources */,
 				4E4F639124AC087C002A5C1A /* SceneDelegate.swift in Sources */,
 				4ED489DE24AF710600C81ACE /* SurveillanceManager.swift in Sources */,
+				4EF1183224B0C50E002D8D0E /* LogFileViewController.swift in Sources */,
+				4EF1183424B0EA90002D8D0E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,7 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4ED489E824AF74D500C81ACE /* DeviceTests.swift in Sources */,
-				4ED489F224AF90B300C81ACE /* LoggerTests.swift in Sources */,
+				4ED489F224AF90B300C81ACE /* LogFileManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

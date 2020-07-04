@@ -7,46 +7,109 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RSSISniffer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="RSSISniffer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aON-hB-uDr">
-                                <rect key="frame" x="190" y="84" width="34" height="30"/>
+                                <rect key="frame" x="190" y="433" width="34" height="30"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="doStartStop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TFf-YQ-OKD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="central.state" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eu2-Fl-fYS">
-                                <rect key="frame" x="20" y="154" width="374" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sM9-hB-pF1">
+                                <rect key="frame" x="364" y="832" width="30" height="30"/>
+                                <state key="normal" title="Log"/>
+                                <connections>
+                                    <segue destination="B3V-6a-0Bt" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="aDM-Vq-hAf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Eu2-Fl-fYS" secondAttribute="trailing" constant="20" id="MQB-Ra-iCr"/>
-                            <constraint firstItem="Eu2-Fl-fYS" firstAttribute="top" secondItem="aON-hB-uDr" secondAttribute="bottom" constant="40" id="bMy-ud-NEP"/>
-                            <constraint firstItem="Eu2-Fl-fYS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="bYF-95-BiI"/>
+                            <constraint firstItem="aON-hB-uDr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="2i5-VI-K8Z"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sM9-hB-pF1" secondAttribute="trailing" constant="20" id="TBH-GL-Saz"/>
+                            <constraint firstItem="sM9-hB-pF1" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Z8Q-sb-BT0"/>
                             <constraint firstItem="aON-hB-uDr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ejB-iX-pzR"/>
-                            <constraint firstItem="aON-hB-uDr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="sNL-zl-2Hl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="CentralStateLabel" destination="Eu2-Fl-fYS" id="qaQ-a0-n6w"/>
                         <outlet property="StartStopButton" destination="aON-hB-uDr" id="0Nb-2K-nrY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="118.52678571428571"/>
+        </scene>
+        <!--Log File View Controller-->
+        <scene sceneID="dcQ-x4-nRi">
+            <objects>
+                <viewController id="B3V-6a-0Bt" customClass="LogFileViewController" customModule="RSSISniffer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DNH-a0-jKf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLp-kE-qdN">
+                                <rect key="frame" x="20" y="832" width="36" height="30"/>
+                                <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="doClear:" destination="B3V-6a-0Bt" eventType="touchUpInside" id="1Kd-FJ-Wfr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dx1-aK-1WB">
+                                <rect key="frame" x="189" y="832" width="36" height="30"/>
+                                <state key="normal" title="Copy"/>
+                                <connections>
+                                    <action selector="doCopy:" destination="B3V-6a-0Bt" eventType="touchUpInside" id="3uS-61-M3e"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1TA-Xn-p4A">
+                                <rect key="frame" x="340" y="832" width="54" height="30"/>
+                                <state key="normal" title="Dismiss"/>
+                                <connections>
+                                    <segue destination="zjZ-VX-Azw" kind="unwind" unwindAction="homeUnwindActionWithUnwindSegue:" id="Bxk-k2-hHx"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4LR-2L-I8T">
+                                <rect key="frame" x="20" y="44" width="374" height="780"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="1TA-Xn-p4A" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dx1-aK-1WB" secondAttribute="trailing" constant="8" symbolic="YES" id="0rT-7f-4MM"/>
+                            <constraint firstItem="1TA-Xn-p4A" firstAttribute="bottom" secondItem="4Id-t3-zrH" secondAttribute="bottom" id="AUX-kw-i4G"/>
+                            <constraint firstItem="dx1-aK-1WB" firstAttribute="centerX" secondItem="DNH-a0-jKf" secondAttribute="centerX" id="MfV-2D-NNZ"/>
+                            <constraint firstItem="dx1-aK-1WB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qLp-kE-qdN" secondAttribute="trailing" constant="8" symbolic="YES" id="Mmj-6b-iin"/>
+                            <constraint firstItem="qLp-kE-qdN" firstAttribute="leading" secondItem="4Id-t3-zrH" secondAttribute="leading" constant="20" id="Oq2-7L-FWs"/>
+                            <constraint firstItem="4Id-t3-zrH" firstAttribute="trailing" secondItem="1TA-Xn-p4A" secondAttribute="trailing" constant="20" id="Tuo-DX-Zah"/>
+                            <constraint firstItem="4LR-2L-I8T" firstAttribute="top" secondItem="4Id-t3-zrH" secondAttribute="top" id="WNo-EF-T27"/>
+                            <constraint firstItem="dx1-aK-1WB" firstAttribute="bottom" secondItem="4Id-t3-zrH" secondAttribute="bottom" id="We4-5Y-kti"/>
+                            <constraint firstItem="qLp-kE-qdN" firstAttribute="bottom" secondItem="4Id-t3-zrH" secondAttribute="bottom" id="XSi-FL-0GV"/>
+                            <constraint firstItem="4Id-t3-zrH" firstAttribute="trailing" secondItem="4LR-2L-I8T" secondAttribute="trailing" constant="20" id="ZPz-nS-xQO"/>
+                            <constraint firstItem="4LR-2L-I8T" firstAttribute="leading" secondItem="4Id-t3-zrH" secondAttribute="leading" constant="20" id="c6Q-H4-Tkc"/>
+                            <constraint firstItem="qLp-kE-qdN" firstAttribute="top" secondItem="4LR-2L-I8T" secondAttribute="bottom" constant="8" id="mxk-s7-9Wu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4Id-t3-zrH"/>
+                    </view>
+                    <connections>
+                        <outlet property="logTextView" destination="4LR-2L-I8T" id="ufD-Z9-Bxa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1IC-1q-WIH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="zjZ-VX-Azw" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1114.4927536231885" y="118.52678571428571"/>
         </scene>
     </scenes>
 </document>

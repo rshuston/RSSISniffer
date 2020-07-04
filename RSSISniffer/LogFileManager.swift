@@ -1,5 +1,5 @@
 //
-//  Logger.swift
+//  LogFileManager.swift
 //  RSSISniffer
 //
 //  Created by Robert Huston on 7/3/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Logger {
+class LogFileManager {
 
     public static func remove(fileName: String) {
         let documentFileURL = makeDocumentFileURL(fileName: fileName)
@@ -47,11 +47,7 @@ class Logger {
         guard FileManager.default.fileExists(atPath: documentFileURL.path) == true else { return data }
 
         do {
-            let fh = try FileHandle(forReadingFrom: documentFileURL)
-            fh.seek(toFileOffset: 0)
-            let fileData = fh.availableData
-            fh.closeFile()
-            data = String(data: fileData, encoding: .utf8) ?? ""
+            data = try String(contentsOf: documentFileURL, encoding: .utf8)
         } catch let error as NSError {
             print("read: error reading \(fileName): \(error)")
         }
@@ -87,7 +83,7 @@ class Logger {
     }
 
     public static func makeDocumentFileURL(fileName: String) -> URL {
-        return Logger.getDocumentDirectoryURL().appendingPathComponent(fileName)
+        return LogFileManager.getDocumentDirectoryURL().appendingPathComponent(fileName)
     }
 
     private static func getDocumentDirectoryURL() -> URL {

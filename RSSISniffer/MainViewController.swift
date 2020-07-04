@@ -9,10 +9,9 @@
 import UIKit
 import CoreBluetooth
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
 
     @IBOutlet weak var StartStopButton: UIButton!
-    @IBOutlet weak var CentralStateLabel: UILabel!
 
     let Red_Green_UUID = CBUUID(string: "573548B2-440F-39E4-6F2E-C7ABDE070D96")
 
@@ -37,6 +36,9 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBAction  func homeUnwindAction(unwindSegue: UIStoryboardSegue) {
+    }
+
     func startScanningForPeripherals() {
         centralManager.scanForPeripherals(withServices: nil, options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
         StartStopButton.setTitle("Stop", for: .normal)
@@ -49,7 +51,7 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController: CBCentralManagerDelegate {
+extension MainViewController: CBCentralManagerDelegate {
 
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         let stateMsg: String
@@ -72,7 +74,6 @@ extension ViewController: CBCentralManagerDelegate {
             stateMsg = "central.state default is \(central.state)"
         }
         print(stateMsg)
-        CentralStateLabel.text = stateMsg
     }
 
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {

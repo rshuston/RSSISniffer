@@ -1,5 +1,5 @@
 //
-//  LoggerTests.swift
+//  LogFileManagerTests.swift
 //  RSSISnifferTests
 //
 //  Created by Robert Huston on 7/3/20.
@@ -10,7 +10,7 @@ import XCTest
 
 @testable import RSSISniffer
 
-class LoggerTests: XCTestCase {
+class LogFileManagerTests: XCTestCase {
 
     let testFileName = "TestFile.txt"
 
@@ -30,11 +30,15 @@ class LoggerTests: XCTestCase {
     }
 
     override func tearDownWithError() throws {
+        // Make sure we clean up after ourselves
+        if FileManager.default.fileExists(atPath: testFileURL.path) {
+            try! FileManager.default.removeItem(at: testFileURL)
+        }
         testFileURL = nil
     }
 
     func testReturnsDocumentDirectoryURL() throws {
-        let actual = Logger.makeDocumentFileURL(fileName: testFileName)
+        let actual = LogFileManager.makeDocumentFileURL(fileName: testFileName)
 
         XCTAssertEqual(actual, testFileURL)
     }
@@ -45,7 +49,7 @@ class LoggerTests: XCTestCase {
         XCTAssert(success)
         XCTAssert( FileManager.default.fileExists(atPath: testFileURL.path) )
 
-        Logger.remove(fileName: testFileName)
+        LogFileManager.remove(fileName: testFileName)
 
         success = FileManager.default.fileExists(atPath: testFileURL.path)
         XCTAssert(!success)
@@ -57,28 +61,20 @@ class LoggerTests: XCTestCase {
         XCTAssert(success)
         XCTAssert( FileManager.default.fileExists(atPath: testFileURL.path) )
 
-        Logger.clear(fileName: testFileName)
+        LogFileManager.clear(fileName: testFileName)
 
         XCTAssert( FileManager.default.fileExists(atPath: testFileURL.path) )
-        let fh = try! FileHandle(forReadingFrom: testFileURL)
-        fh.seek(toFileOffset: 0)
-        let fileDataRead = fh.availableData
-        fh.closeFile()
-        let dataRead = String(data: fileDataRead, encoding: .utf8)!
+        let dataRead = try! String(contentsOf: testFileURL, encoding: .utf8)
         XCTAssertEqual(dataRead, "")
     }
 
     func testClearCreatesEmptyFileWhenNotYetExisting() {
         XCTAssert( !FileManager.default.fileExists(atPath: testFileURL.path) )
         
-        Logger.clear(fileName: testFileName)
+        LogFileManager.clear(fileName: testFileName)
 
         XCTAssert( FileManager.default.fileExists(atPath: testFileURL.path) )
-        let fh = try! FileHandle(forReadingFrom: testFileURL)
-        fh.seek(toFileOffset: 0)
-        let fileDataRead = fh.availableData
-        fh.closeFile()
-        let dataRead = String(data: fileDataRead, encoding: .utf8)!
+        let dataRead = try! String(contentsOf: testFileURL, encoding: .utf8)
         XCTAssertEqual(dataRead, "")
     }
 
@@ -90,13 +86,13 @@ class LoggerTests: XCTestCase {
         XCTAssert(success)
         XCTAssert( FileManager.default.fileExists(atPath: testFileURL.path) )
 
-        let dataRead = Logger.read(fileName: testFileName)
+        let dataRead = LogFileManager.read(fileName: testFileName)
 
         XCTAssertEqual(dataRead, fileText)
     }
 
     func testReadReturnsEmptyStringForNonExistingFile() {
-        let dataRead = Logger.read(fileName: testFileName)
+        let dataRead = LogFileManager.read(fileName: testFileName)
 
         XCTAssertEqual(dataRead, "")
     }
@@ -106,14 +102,10 @@ class LoggerTests: XCTestCase {
 
         let fileText = "A cheerful little bird is sitting here singing."
 
-        Logger.write(fileName: testFileName, text: fileText)
+        LogFileManager.write(fileName: testFileName, text: fileText)
 
         XCTAssert( FileManager.default.fileExists(atPath: testFileURL.path) )
-        let fh = try! FileHandle(forReadingFrom: testFileURL)
-        fh.seek(toFileOffset: 0)
-        let fileDataRead = fh.availableData
-        fh.closeFile()
-        let dataRead = String(data: fileDataRead, encoding: .utf8)!
+        let dataRead = try! String(contentsOf: testFileURL, encoding: .utf8)
         let parts = dataRead.components(separatedBy: ",")
         let timeValue = TimeInterval(parts[0])
         XCTAssertNotNil(timeValue)
@@ -128,14 +120,10 @@ class LoggerTests: XCTestCase {
 
         let fileText = "PLUGH"
 
-        Logger.write(fileName: testFileName, text: fileText)
+        LogFileManager.write(fileName: testFileName, text: fileText)
 
         XCTAssert( FileManager.default.fileExists(atPath: testFileURL.path) )
-        let fh = try! FileHandle(forReadingFrom: testFileURL)
-        fh.seek(toFileOffset: 0)
-        let fileDataRead = fh.availableData
-        fh.closeFile()
-        let dataRead = String(data: fileDataRead, encoding: .utf8)!
+        let dataRead = try! String(contentsOf: testFileURL, encoding: .utf8)
         let parts = dataRead.components(separatedBy: ",")
         XCTAssertEqual(parts[0], "12345")
         XCTAssertEqual(parts[1], "XYZZY")
@@ -147,15 +135,11 @@ class LoggerTests: XCTestCase {
     func testWriteLnAppendsNewTextWithLineFeed() {
         XCTAssert( !FileManager.default.fileExists(atPath: testFileURL.path) )
 
-        Logger.writeLn(fileName: testFileName, text: "XYZZY")
-        Logger.writeLn(fileName: testFileName, text: "PLUGH")
+        LogFileManager.writeLn(fileName: testFileName, text: "XYZZY")
+        LogFileManager.writeLn(fileName: testFileName, text: "PLUGH")
 
         XCTAssert( FileManager.default.fileExists(atPath: testFileURL.path) )
-        let fh = try! FileHandle(forReadingFrom: testFileURL)
-        fh.seek(toFileOffset: 0)
-        let fileDataRead = fh.availableData
-        fh.closeFile()
-        let dataRead = String(data: fileDataRead, encoding: .utf8)!
+        let dataRead = try! String(contentsOf: testFileURL, encoding: .utf8)
         let lines = dataRead.components(separatedBy: "\n")
         // line1
         var parts = lines[0].components(separatedBy: ",")

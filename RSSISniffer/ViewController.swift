@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var StartStopButton: UIButton!
     @IBOutlet weak var CentralStateLabel: UILabel!
 
+    let Red_Green_UUID = CBUUID(string: "573548B2-440F-39E4-6F2E-C7ABDE070D96")
+
     var centralManager: CBCentralManager!
 
     override func viewDidLoad() {
@@ -82,4 +84,3 @@ extension ViewController: CBCentralManagerDelegate {
     }
 
 }
-

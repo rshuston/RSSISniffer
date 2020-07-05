@@ -69,7 +69,7 @@ extension MainViewController: CBCentralManagerDelegate {
             stopScanningForPeripherals()
         case .poweredOn:
             stateMsg = "central.state is .poweredOn"
-            startScanningForPeripherals()
+            //startScanningForPeripherals()
         @unknown default:
             stateMsg = "central.state default is \(central.state)"
         }
@@ -78,10 +78,13 @@ extension MainViewController: CBCentralManagerDelegate {
 
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
 
-        let uuid = peripheral.identifier
+        let uuid = peripheral.identifier.uuidString
         let name = peripheral.name ?? "?"
 
         print("peripheral: uuid = \(uuid), RSSI = \(RSSI.stringValue), name = \(name)")
+
+        let csvString = "\(uuid),\(RSSI.stringValue),\(name)"
+        LogFileManager.writeLn(fileName: Constants.Files.DeviceSurveillance, text: csvString)
     }
 
 }

@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+class DeviceTrackingManager {
+
+    static var deviceList: [Device] = []
+
+    public func foo() {
+        
+    }
+
+}

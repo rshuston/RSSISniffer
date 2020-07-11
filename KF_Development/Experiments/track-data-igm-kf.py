@@ -6,6 +6,8 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 
+Eye = np.identity(2)
+
 class DeviceIdentity:
     def __init__(self, name):
         self.name = name
@@ -16,29 +18,54 @@ class DeviceReading:
         self.rssi = rssi
         self.name = name
 
-class FilteredRSSI:
-    def __init__(self, P0=1, sigma=1, beta=1, R=1):
+class IGM_FilteredRSSI:
+    def __init__(self, P0=Eye, sigma=1, beta=1, R=1):
         self.state = 0
+        self.t = 0
         self.P = P0
         self.sigma_sq = sigma * sigma
         self.beta = beta
-        self.R = R
+        self.R = np.array([ [R] ])
         
     def update(self, t, z):
         if self.state == 0:
             self.t = t
-            self.x = z
+            self.x = np.array([ [z],
+                                [0] ])
             self.state = 1
         else:
             tau = t - self.t
             self.t = t
-            phi = math.exp(- self.beta * tau)
-            Q = self.sigma_sq * self.beta * (1 - math.exp(-2 * tau))
-            x_m = phi * self.x
-            P_m = phi * phi * self.P + Q
-            K = P_m / (P_m + self.R)
-            self.x = x_m + K * (z - x_m)
-            self.P = (1 - K) * P_m        
+            
+            gm_phi = math.exp(- self.beta * tau)
+            exp_term_1 = (1 - gm_phi) / self.beta
+            exp_term_2 = (1 - gm_phi * gm_phi) / (2 * self.beta)
+            exp_term_3 = 1 - gm_phi * gm_phi
+            
+            Phi = np.array([ [1, exp_term_1],
+                             [0, gm_phi    ] ])
+            Ex1x1 = 2 * self.sigma_sq * (tau - 2 * exp_term_1 + exp_term_2) / self.beta
+            Ex1x2 = 2 * self.sigma_sq * (exp_term_1 - exp_term_2)
+            Ex2x2 = self.sigma_sq * exp_term_3
+            Q = np.array([ [Ex1x1, Ex1x2],
+                           [Ex1x2, Ex2x2] ])
+            H = np.array([ [1, 0] ])
+            
+            Phi_T = np.transpose(Phi)
+            H_T = np.transpose(H)
+            
+            x_m = Phi @ self.x
+            P_m = Phi @ self.P @ Phi_T + Q
+            
+            S = H @ P_m @ H_T + self.R
+            S_inv = np.linalg.inv(S)
+            K = P_m @ H_T @ S_inv
+                        
+            self.x = x_m + K @ (np.array([[z]]) - H @ x_m)
+            self.P = (Eye - K) @ P_m
+    
+    def x1(self):
+        return self.x[0][0]
 
 csv_file_name = ""
 device_uuid = ""
@@ -80,7 +107,7 @@ if device_uuid != "":
     rssi = np.array([])
     rssi_f = np.array([])
     
-    filter = FilteredRSSI(P0=5, sigma=10, beta=0.001, R=10)
+    filter = IGM_FilteredRSSI(P0=Eye, sigma=0.2, beta=0.1, R=5)
 
     for time in sorted(DeviceReadingDict):
         reading = DeviceReadingDict[time]
@@ -89,9 +116,9 @@ if device_uuid != "":
             t = np.concatenate([t, [time]])
             rssi = np.concatenate([rssi, [reading.rssi]])
             filter.update(time, reading.rssi)
-            rssi_f = np.concatenate([rssi_f, [filter.x]])
-
-    print(f"Final P value = {filter.P}")
+            rssi_f = np.concatenate([rssi_f, [filter.x1()]])
+    
+    print(f"Final P value =\n{filter.P}")
     
     plt.axes(ylim=(-100, 0))
     plt.grid(which='both')

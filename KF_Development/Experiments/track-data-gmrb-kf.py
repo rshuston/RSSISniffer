@@ -126,7 +126,7 @@ if device_uuid != "":
             rssi_f_P01 = np.concatenate([rssi_f_P01, [filter.P01()]])
             rssi_f_P11 = np.concatenate([rssi_f_P11, [filter.P11()]])
     
-    plot2 = plt.figure(1)
+    plot1 = plt.figure(num=1, figsize=[8,6])
     plt.axes(ylim=(-10, 10))
     plt.grid(which='both')
     plt.plot(t, rssi_f_P00, 'k')
@@ -134,7 +134,7 @@ if device_uuid != "":
     plt.plot(t, rssi_f_P11, 'k')
     plt.title(label="KF State Covariance")
                 
-    plot1 = plt.figure(2)
+    plot2 = plt.figure(num=2)
     plt.axes(ylim=(-100, 0))
     plt.grid(which='both')
     plt.plot(t, rssi, 'b.')

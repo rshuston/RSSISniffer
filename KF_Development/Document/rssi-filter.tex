@@ -67,14 +67,14 @@ model.
 \clearpage
 \section{Introduction}
 
-Two basic architectures are representative of the reception of digital signals:
+Two fundamental architectures are representative of the reception of digital signals:
 direct-conversion and low-IF. The basic direct-conversion architecture is shown in
 Figure \ref{fig:rx-arch-direct}. The direct-conversion architecture supplies the baseband
 I and Q digital samples directly to the DSP.
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=1.0\textwidth]{RX-Arch-Direct.png}
+    \includegraphics[width=0.9\textwidth]{RX-Arch-Direct.png}
     \caption{Digital Receiver Architecture - Direct Conversion}
     \label{fig:rx-arch-direct}
 \end{figure}
@@ -99,6 +99,7 @@ Of course, the position of the radio antenna itself also has an effect on signal
 due to shadowing and polarization, and also due to multipath signals imposed by the
 physical layout of an indoor environment.
 
+Many Bluetooth receiver architectures have been implemented in the mobile device industry.
 The reality is that Bluetooth RSSI measurements as acquired by a mobile device can be
 highly erratic and can be quite unreliable in their raw form. The application of a filter
 to refine the raw measurements is certainly warranted. In this paper, we explore the use
@@ -703,7 +704,7 @@ the UUID of the stationary iPhone produces the results shown in Figure
 
 It does not appear that the Gauss-Markov with random bias model offers a noticeable
 improvement over the Gauss-Markov model. Given the added processing complexity in going
-from a scalar filer to a $2 \times 2$ matrix filter, this filter model is not a viable
+from a scalar filter to a $2 \times 2$ matrix filter, this filter model is not a viable
 choice for this particular application.
 
 For completeness, the back yard results for the MacBook Pro can be seen in Figure
@@ -1006,7 +1007,7 @@ Unlike the results of the Gauss-Markov with random bias model, it definitely app
 the integrated Gauss-Markov model offers a substantial improvement over the Gauss-Markov
 model. The filtered estimate is much more centered within the RSSI measurement data than
 that of the Gauss-Markov model, and the filtered estimate is smoother yet still responsive.
-The added processing complexity in going from a scalar filer to a $2 \times 2$ matrix
+The added processing complexity in going from a scalar filter to a $2 \times 2$ matrix
 filter is worth the the effort for the use of this filter model for this particular
 application. In fact, because it is a two-state filter, the matrix operations can be
 explicitly coded for each element, thereby improving efficiency.
@@ -1105,23 +1106,38 @@ You can access the source for this project from my GitHub repo: \\
 
 \bibitem{rgbrown1983}
 Brown, R. G., 1983, \\
-\emph{Introduction to Random Signal Analysis and Kalman Filtering},
+\emph{Introduction to Random Signal Analysis and Kalman Filtering}, \\
 John Wiley \& Sons, Inc., New York, NY.
 
 \bibitem{sorenson1985}
 Sorenson, H. W. (Ed.), 1985, \\
-\emph{Kalman Filtering: Theory and Application},
+\emph{Kalman Filtering: Theory and Application}, \\
 IEEE Press, New York, NY.
 
 \bibitem{chuichen1987}
 Chui, C. K. and Chen, G., 1987, \\
-\emph{Kalman Filtering with Real-Time Applications},
+\emph{Kalman Filtering with Real-Time Applications}, \\
 Springer-Verlag, New York, NY.
 
 \bibitem{grewalandrews1993}
 Grewal, M. S., and Andrews, A. P., 1993, \\
-\emph{Kalman Filtering: Theory and Practice},
+\emph{Kalman Filtering: Theory and Practice}, \\
 Prentice-Hall, Englewood Cliffs, NJ.
+
+\bibitem{CMOSLowIFRX2002}
+Sheng, Xia, Emira, Xin, Moon, Valero-Lopez, and Sanchez-Sinencio, 2002, \\
+\emph{A Monolithic CMOS Low-IF Bluetooth Receiver}, \\
+IEEE Custom Circuits Conference, 2002, pp. 247-250
+
+\bibitem{BluetoothWiFiRX2004}
+Emira, Valdes-Garcia, Xia, Moheildin, Valero-Lopez, Moon, Xin, and Sanchez-Sinencio, 2004, \\
+\emph{A BiCMOS Bluetooth/Wi-Fi Receiver}, \\
+IEEE Radio Frequency Integrated Circuits Symposium, 2004, pp. 519-522
+
+\bibitem{TIDN505RSSI2010}
+Johnsrud and Aaberge, 2010, \\
+\emph{RSSI Interpretation and Timing}, \\
+Texas Instruments Design Note DN505
 
 \end{thebibliography}
 

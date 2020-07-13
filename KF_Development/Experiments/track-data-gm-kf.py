@@ -94,13 +94,13 @@ if device_uuid != "":
             rssi_f_x = np.concatenate([rssi_f_x, [filter.x]])
             rssi_f_P = np.concatenate([rssi_f_P, [filter.P]])
     
-    plot2 = plt.figure(1)
+    plot1 = plt.figure(num=1, figsize=[8,6])
     plt.axes(ylim=(0, 10))
     plt.grid(which='both')
     plt.plot(t, rssi_f_P, 'k')
     plt.title(label="KF State Variance")
     
-    plot1 = plt.figure(2)
+    plot2 = plt.figure(num=2)
     plt.axes(ylim=(-100, 0))
     plt.grid(which='both')
     plt.plot(t, rssi, 'b.')

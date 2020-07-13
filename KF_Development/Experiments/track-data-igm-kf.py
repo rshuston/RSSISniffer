@@ -62,7 +62,7 @@ class IGM_FilteredRSSI:
             K = P_m @ H_T @ S_inv
                         
             self.x = x_m + K @ (np.array([[z]]) - H @ x_m)
-            self.P = (Eye - K) @ P_m
+            self.P = (Eye - K @ H) @ P_m
     
     def x0(self):
         return self.x[0][0]
@@ -136,10 +136,11 @@ if device_uuid != "":
     plot1 = plt.figure(num=1, figsize=[8,6])
     plt.axes(ylim=(-2, 2))
     plt.grid(which='both')
-    plt.plot(t, rssi_f_P00, 'k')
-    plt.plot(t, rssi_f_P01, 'k')
-    plt.plot(t, rssi_f_P11, 'k')
+    plt.plot(t, rssi_f_P00, 'k', label='P00')
+    plt.plot(t, rssi_f_P01, 'g', label='P01')
+    plt.plot(t, rssi_f_P11, 'b', label='P11')
     plt.title(label="KF State Covariance")
+    plt.legend(loc='best', shadow=True)
     
     plot2 = plt.figure(num=2)
     plt.axes(ylim=(-100, 0))

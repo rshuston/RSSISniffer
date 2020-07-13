@@ -79,7 +79,8 @@ for uuid in sorted(DeviceIdentityDict):
 if device_uuid != "":
     t = np.array([])
     rssi = np.array([])
-    rssi_f = np.array([])
+    rssi_f_x = np.array([])
+    rssi_f_P = np.array([])
     
     filter = GM_FilteredRSSI(P0=5, sigma=10, beta=0.01, R=25)
 
@@ -90,16 +91,20 @@ if device_uuid != "":
             t = np.concatenate([t, [time]])
             rssi = np.concatenate([rssi, [reading.rssi]])
             filter.update(time, reading.rssi)
-            rssi_f = np.concatenate([rssi_f, [filter.x]])
-
-    print(f"Final P value = {filter.P}")
+            rssi_f_x = np.concatenate([rssi_f_x, [filter.x]])
+            rssi_f_P = np.concatenate([rssi_f_P, [filter.P]])
     
+    plot2 = plt.figure(1)
+    plt.axes(ylim=(0, 10))
+    plt.grid(which='both')
+    plt.plot(t, rssi_f_P, 'k')
+    plt.title(label="KF State Variance")
+    
+    plot1 = plt.figure(2)
     plt.axes(ylim=(-100, 0))
     plt.grid(which='both')
-
     plt.plot(t, rssi, 'b.')
-    plt.plot(t, rssi_f, 'r')
-
+    plt.plot(t, rssi_f_x, 'r')
     plt.title(label=f"{DeviceIdentityDict[device_uuid].name}")
-
+    
     plt.show()

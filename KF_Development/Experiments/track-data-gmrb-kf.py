@@ -57,8 +57,17 @@ class GMRB_FilteredRSSI:
             self.x = x_m + K @ (np.array([[z]]) - H @ x_m)
             self.P = (Eye - K) @ P_m
     
-    def x1(self):
+    def x0(self):
         return self.x[0][0]
+    
+    def P00(self):
+        return self.P[0][0]
+    
+    def P01(self):
+        return self.P[0][1]
+    
+    def P11(self):
+        return self.P[1][1]
 
 csv_file_name = ""
 device_uuid = ""
@@ -98,7 +107,10 @@ for uuid in sorted(DeviceIdentityDict):
 if device_uuid != "":
     t = np.array([])
     rssi = np.array([])
-    rssi_f = np.array([])
+    rssi_f_x0 = np.array([])
+    rssi_f_P00 = np.array([])
+    rssi_f_P01 = np.array([])
+    rssi_f_P11 = np.array([])
     
     filter = GMRB_FilteredRSSI(P0=5*Eye, sigma_b=0.5, sigma_g=1, beta_g=0.1, R=25)
 
@@ -109,16 +121,24 @@ if device_uuid != "":
             t = np.concatenate([t, [time]])
             rssi = np.concatenate([rssi, [reading.rssi]])
             filter.update(time, reading.rssi)
-            rssi_f = np.concatenate([rssi_f, [filter.x1()]])
-            
-    print(f"Final P value =\n{filter.P}")
+            rssi_f_x0  = np.concatenate([rssi_f_x0,  [filter.x0()]])
+            rssi_f_P00 = np.concatenate([rssi_f_P00, [filter.P00()]])
+            rssi_f_P01 = np.concatenate([rssi_f_P01, [filter.P01()]])
+            rssi_f_P11 = np.concatenate([rssi_f_P11, [filter.P11()]])
     
+    plot2 = plt.figure(1)
+    plt.axes(ylim=(-10, 10))
+    plt.grid(which='both')
+    plt.plot(t, rssi_f_P00, 'k')
+    plt.plot(t, rssi_f_P01, 'k')
+    plt.plot(t, rssi_f_P11, 'k')
+    plt.title(label="KF State Covariance")
+                
+    plot1 = plt.figure(2)
     plt.axes(ylim=(-100, 0))
     plt.grid(which='both')
-
     plt.plot(t, rssi, 'b.')
-    plt.plot(t, rssi_f, 'r')
-
+    plt.plot(t, rssi_f_x0, 'r')
     plt.title(label=f"{DeviceIdentityDict[device_uuid].name}")
 
     plt.show()

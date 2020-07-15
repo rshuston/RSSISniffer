@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E3E7D3524BF3287009B65F3 /* KalmanFilterPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E7D3424BF3287009B65F3 /* KalmanFilterPerformanceTests.swift */; };
 		4E45B15A24B2BF83006343F3 /* DeviceTrackingManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E45B15924B2BF83006343F3 /* DeviceTrackingManagerTests.swift */; };
 		4E45B15C24B2BFEE006343F3 /* SurveillanceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E45B15B24B2BFEE006343F3 /* SurveillanceManagerTests.swift */; };
 		4E45B15E24B2C044006343F3 /* GMKF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E45B15D24B2C044006343F3 /* GMKF.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E3E7D3424BF3287009B65F3 /* KalmanFilterPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KalmanFilterPerformanceTests.swift; sourceTree = "<group>"; };
 		4E45B15924B2BF83006343F3 /* DeviceTrackingManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTrackingManagerTests.swift; sourceTree = "<group>"; };
 		4E45B15B24B2BFEE006343F3 /* SurveillanceManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveillanceManagerTests.swift; sourceTree = "<group>"; };
 		4E45B15D24B2C044006343F3 /* GMKF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMKF.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				4ED489F124AF90B300C81ACE /* LogFileManagerTests.swift */,
 				4E45B15F24B2C05A006343F3 /* GMKFTests.swift */,
 				4EF9E9BB24BD3FDF0042613A /* IGMKFTests.swift */,
+				4E3E7D3424BF3287009B65F3 /* KalmanFilterPerformanceTests.swift */,
 				4ED489E724AF74D500C81ACE /* DeviceTests.swift */,
 				4E45B15924B2BF83006343F3 /* DeviceTrackingManagerTests.swift */,
 				4E45B15B24B2BFEE006343F3 /* SurveillanceManagerTests.swift */,
@@ -261,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E3E7D3524BF3287009B65F3 /* KalmanFilterPerformanceTests.swift in Sources */,
 				4E45B16024B2C05A006343F3 /* GMKFTests.swift in Sources */,
 				4E45B15C24B2BFEE006343F3 /* SurveillanceManagerTests.swift in Sources */,
 				4ED489E824AF74D500C81ACE /* DeviceTests.swift in Sources */,
@@ -455,6 +459,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7WAY8D5BF4;
 				INFOPLIST_FILE = RSSISnifferTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -474,6 +479,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7WAY8D5BF4;
 				INFOPLIST_FILE = RSSISnifferTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

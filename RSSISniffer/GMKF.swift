@@ -40,13 +40,18 @@ class GMKF {
         } else {
             let tau = t - self.t
             self.t = t
-            let exp_mBt = exp(-beta * tau)
+
+            let exp_mBt = exp(-beta * tau)  // For performance, we only want to do one call to exp()
             let exp_m2Bt = exp_mBt * exp_mBt
+
             let phi = exp_mBt
             let Q = sigma_sq * (1 - exp_m2Bt)
+
             let x_m = phi * x
             let P_m = P * exp_m2Bt + Q
+
             let K = P_m / (P_m + R)
+
             x = x_m + K * (z - x_m)
             P = (1 - K) * P_m
         }

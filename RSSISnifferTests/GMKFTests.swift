@@ -72,11 +72,4 @@ class GMKFTests: XCTestCase {
         XCTAssertEqual(subject.P, 0.396826, accuracy: 0.000001)
     }
 
-//    func testPerformanceExample() throws {
-//        // This is an example of a performance test case.
-//        self.measure {
-//            // Put the code you want to measure the time of here.
-//        }
-//    }
-
 }

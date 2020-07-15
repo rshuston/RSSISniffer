@@ -48,7 +48,7 @@ class IGMKF {
             let tau = t - self.t
             self.t = t
 
-            let exp_mBt = exp(-beta * tau)
+            let exp_mBt = exp(-beta * tau)  // For performance, we only want to do one call to exp()
             let exp_m2Bt = exp_mBt * exp_mBt
 
             let one_m_exp_mBt_d_B = (1.0 - exp_mBt) / beta
@@ -74,7 +74,6 @@ class IGMKF {
             let K1 = Pm01 / (Pm00 + R)
 
             let dz = z - xm0
-
             x0 = xm0 + K0 * dz
             x1 = xm1 + K1 * dz
 

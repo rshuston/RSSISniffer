@@ -1086,7 +1086,10 @@ illustrate this comparison.
 While additional refining of tuning the filter parameters is needed before producing a
 production-worthy filter, it can be concluded that the feasibility of using a Kalman
 filter for estimating RSSI signal level is justified, and it is recommended that the
-integrated Gauss-Markov process model be the preferred choice for implementation.
+integrated Gauss-Markov process model be the preferred choice for implementation. By
+taking advantage of the symmetry of the $\mathbf{P}$ matrix and the structure of the
+$\mathbf{H}$ matrix, the implementation of the integrated Gauss-Markov Kalman Filter
+can be made quite efficient.
 
 You can access the source for this project from my GitHub repo: \\
 %\textcolor{blue}{https://github.com/rshuston/RSSISniffer}
@@ -1101,6 +1104,8 @@ You can access the source for this project from my GitHub repo: \\
 %-------------------------------------------------------------------------------
 
 \clearpage
+
+\renewcommand{\refname}{General References}
 
 \begin{thebibliography}{9}
 

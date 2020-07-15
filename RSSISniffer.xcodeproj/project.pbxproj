@@ -25,6 +25,8 @@
 		4ED489F224AF90B300C81ACE /* LogFileManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED489F124AF90B300C81ACE /* LogFileManagerTests.swift */; };
 		4EF1183224B0C50E002D8D0E /* LogFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1183124B0C50E002D8D0E /* LogFileViewController.swift */; };
 		4EF1183424B0EA90002D8D0E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1183324B0EA90002D8D0E /* Constants.swift */; };
+		4EF9E9BA24BD3F960042613A /* IGMKF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF9E9B924BD3F960042613A /* IGMKF.swift */; };
+		4EF9E9BC24BD3FDF0042613A /* IGMKFTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF9E9BB24BD3FDF0042613A /* IGMKFTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		4ED489F124AF90B300C81ACE /* LogFileManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFileManagerTests.swift; sourceTree = "<group>"; };
 		4EF1183124B0C50E002D8D0E /* LogFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFileViewController.swift; sourceTree = "<group>"; };
 		4EF1183324B0EA90002D8D0E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4EF9E9B924BD3F960042613A /* IGMKF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGMKF.swift; sourceTree = "<group>"; };
+		4EF9E9BB24BD3FDF0042613A /* IGMKFTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGMKFTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 				4ED489DF24AF717000C81ACE /* DeviceTrackingManager.swift */,
 				4ED489DB24AF70D800C81ACE /* Device.swift */,
 				4E45B15D24B2C044006343F3 /* GMKF.swift */,
+				4EF9E9B924BD3F960042613A /* IGMKF.swift */,
 				4E4F639424AC087C002A5C1A /* Main.storyboard */,
 				4E4F639724AC087D002A5C1A /* Assets.xcassets */,
 				4E4F639924AC087D002A5C1A /* LaunchScreen.storyboard */,
@@ -128,6 +133,7 @@
 			children = (
 				4ED489F124AF90B300C81ACE /* LogFileManagerTests.swift */,
 				4E45B15F24B2C05A006343F3 /* GMKFTests.swift */,
+				4EF9E9BB24BD3FDF0042613A /* IGMKFTests.swift */,
 				4ED489E724AF74D500C81ACE /* DeviceTests.swift */,
 				4E45B15924B2BF83006343F3 /* DeviceTrackingManagerTests.swift */,
 				4E45B15B24B2BFEE006343F3 /* SurveillanceManagerTests.swift */,
@@ -240,6 +246,7 @@
 				4E4F639324AC087C002A5C1A /* MainViewController.swift in Sources */,
 				4E4F638F24AC087C002A5C1A /* AppDelegate.swift in Sources */,
 				4ED489E024AF717000C81ACE /* DeviceTrackingManager.swift in Sources */,
+				4EF9E9BA24BD3F960042613A /* IGMKF.swift in Sources */,
 				4E45B15E24B2C044006343F3 /* GMKF.swift in Sources */,
 				4ED489DC24AF70D800C81ACE /* Device.swift in Sources */,
 				4ED489F024AF869300C81ACE /* LogFileManager.swift in Sources */,
@@ -258,6 +265,7 @@
 				4E45B15C24B2BFEE006343F3 /* SurveillanceManagerTests.swift in Sources */,
 				4ED489E824AF74D500C81ACE /* DeviceTests.swift in Sources */,
 				4E45B15A24B2BF83006343F3 /* DeviceTrackingManagerTests.swift in Sources */,
+				4EF9E9BC24BD3FDF0042613A /* IGMKFTests.swift in Sources */,
 				4ED489F224AF90B300C81ACE /* LogFileManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

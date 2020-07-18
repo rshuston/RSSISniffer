@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SurveillanceViewController.swift
 //  RSSISniffer
 //
 //  Created by Robert Huston on 6/30/20.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreBluetooth
 
-class MainViewController: UIViewController {
+class SurveillanceViewController: UIViewController {
 
     @IBOutlet weak var StartStopButton: UIButton!
 
@@ -51,7 +51,7 @@ class MainViewController: UIViewController {
 
 }
 
-extension MainViewController: CBCentralManagerDelegate {
+extension SurveillanceViewController: CBCentralManagerDelegate {
 
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         let stateMsg: String

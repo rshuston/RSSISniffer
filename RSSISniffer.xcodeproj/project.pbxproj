@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E1D6FBE24C3B8060095C6EB /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1D6FBD24C3B8060095C6EB /* OptionsViewController.swift */; };
 		4E3E7D3524BF3287009B65F3 /* KalmanFilterPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E7D3424BF3287009B65F3 /* KalmanFilterPerformanceTests.swift */; };
 		4E45B15A24B2BF83006343F3 /* DeviceTrackingManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E45B15924B2BF83006343F3 /* DeviceTrackingManagerTests.swift */; };
 		4E45B15C24B2BFEE006343F3 /* SurveillanceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E45B15B24B2BFEE006343F3 /* SurveillanceManagerTests.swift */; };
@@ -14,7 +15,7 @@
 		4E45B16024B2C05A006343F3 /* GMKFTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E45B15F24B2C05A006343F3 /* GMKFTests.swift */; };
 		4E4F638F24AC087C002A5C1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F638E24AC087C002A5C1A /* AppDelegate.swift */; };
 		4E4F639124AC087C002A5C1A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F639024AC087C002A5C1A /* SceneDelegate.swift */; };
-		4E4F639324AC087C002A5C1A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F639224AC087C002A5C1A /* MainViewController.swift */; };
+		4E4F639324AC087C002A5C1A /* SurveillanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F639224AC087C002A5C1A /* SurveillanceViewController.swift */; };
 		4E4F639624AC087C002A5C1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E4F639424AC087C002A5C1A /* Main.storyboard */; };
 		4E4F639824AC087D002A5C1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E4F639724AC087D002A5C1A /* Assets.xcassets */; };
 		4E4F639B24AC087D002A5C1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E4F639924AC087D002A5C1A /* LaunchScreen.storyboard */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E1D6FBD24C3B8060095C6EB /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		4E3E7D3424BF3287009B65F3 /* KalmanFilterPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KalmanFilterPerformanceTests.swift; sourceTree = "<group>"; };
 		4E45B15924B2BF83006343F3 /* DeviceTrackingManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTrackingManagerTests.swift; sourceTree = "<group>"; };
 		4E45B15B24B2BFEE006343F3 /* SurveillanceManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveillanceManagerTests.swift; sourceTree = "<group>"; };
@@ -49,7 +51,7 @@
 		4E4F638B24AC087C002A5C1A /* RSSISniffer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSISniffer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E4F638E24AC087C002A5C1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E4F639024AC087C002A5C1A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4E4F639224AC087C002A5C1A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		4E4F639224AC087C002A5C1A /* SurveillanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveillanceViewController.swift; sourceTree = "<group>"; };
 		4E4F639524AC087C002A5C1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4E4F639724AC087D002A5C1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E4F639A24AC087D002A5C1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -111,10 +113,12 @@
 		4E4F638D24AC087C002A5C1A /* RSSISniffer */ = {
 			isa = PBXGroup;
 			children = (
+				4EB00FCE24C3B0D100B8F8E4 /* Images */,
 				4E4F638E24AC087C002A5C1A /* AppDelegate.swift */,
 				4E4F639024AC087C002A5C1A /* SceneDelegate.swift */,
 				4EF1183324B0EA90002D8D0E /* Constants.swift */,
-				4E4F639224AC087C002A5C1A /* MainViewController.swift */,
+				4E4F639224AC087C002A5C1A /* SurveillanceViewController.swift */,
+				4E1D6FBD24C3B8060095C6EB /* OptionsViewController.swift */,
 				4ED489EF24AF869300C81ACE /* LogFileManager.swift */,
 				4EF1183124B0C50E002D8D0E /* LogFileViewController.swift */,
 				4ED489DD24AF710600C81ACE /* SurveillanceManager.swift */,
@@ -128,6 +132,13 @@
 				4E4F639C24AC087D002A5C1A /* Info.plist */,
 			);
 			path = RSSISniffer;
+			sourceTree = "<group>";
+		};
+		4EB00FCE24C3B0D100B8F8E4 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		4ED489E624AF74D500C81ACE /* RSSISnifferTests */ = {
@@ -246,7 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E4F639324AC087C002A5C1A /* MainViewController.swift in Sources */,
+				4E4F639324AC087C002A5C1A /* SurveillanceViewController.swift in Sources */,
 				4E4F638F24AC087C002A5C1A /* AppDelegate.swift in Sources */,
 				4ED489E024AF717000C81ACE /* DeviceTrackingManager.swift in Sources */,
 				4EF9E9BA24BD3F960042613A /* IGMKF.swift in Sources */,
@@ -255,6 +266,7 @@
 				4ED489F024AF869300C81ACE /* LogFileManager.swift in Sources */,
 				4E4F639124AC087C002A5C1A /* SceneDelegate.swift in Sources */,
 				4ED489DE24AF710600C81ACE /* SurveillanceManager.swift in Sources */,
+				4E1D6FBE24C3B8060095C6EB /* OptionsViewController.swift in Sources */,
 				4EF1183224B0C50E002D8D0E /* LogFileViewController.swift in Sources */,
 				4EF1183424B0EA90002D8D0E /* Constants.swift in Sources */,
 			);

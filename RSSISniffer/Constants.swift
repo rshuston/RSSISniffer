@@ -14,4 +14,8 @@ enum Constants {
         static let DeviceSurveillance = "DevicesSurveillance.log"
     }
 
+    enum Segues {
+        static let OptionsToLogViewSegue = "OptionsToLogViewSegue"
+    }
+
 }

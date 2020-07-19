@@ -113,14 +113,13 @@
 		4E4F638D24AC087C002A5C1A /* RSSISniffer */ = {
 			isa = PBXGroup;
 			children = (
-				4EB00FCE24C3B0D100B8F8E4 /* Images */,
 				4E4F638E24AC087C002A5C1A /* AppDelegate.swift */,
 				4E4F639024AC087C002A5C1A /* SceneDelegate.swift */,
 				4EF1183324B0EA90002D8D0E /* Constants.swift */,
 				4E4F639224AC087C002A5C1A /* SurveillanceViewController.swift */,
 				4E1D6FBD24C3B8060095C6EB /* OptionsViewController.swift */,
-				4ED489EF24AF869300C81ACE /* LogFileManager.swift */,
 				4EF1183124B0C50E002D8D0E /* LogFileViewController.swift */,
+				4ED489EF24AF869300C81ACE /* LogFileManager.swift */,
 				4ED489DD24AF710600C81ACE /* SurveillanceManager.swift */,
 				4ED489DF24AF717000C81ACE /* DeviceTrackingManager.swift */,
 				4ED489DB24AF70D800C81ACE /* Device.swift */,
@@ -132,13 +131,6 @@
 				4E4F639C24AC087D002A5C1A /* Info.plist */,
 			);
 			path = RSSISniffer;
-			sourceTree = "<group>";
-		};
-		4EB00FCE24C3B0D100B8F8E4 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Images;
 			sourceTree = "<group>";
 		};
 		4ED489E624AF74D500C81ACE /* RSSISnifferTests */ = {

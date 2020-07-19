@@ -15,11 +15,12 @@ class Device {
         case fresh
     }
 
-    static let MaxCount: UInt16 = 3  // Number of successive refreshes to turn stale
+    static let MaxRefreshCount: UInt16 = 3  // Number of successive refreshes to turn stale
 
     let uuid: String
     let name: String
 
+    var rawRSSI: Double
     var kf: IGMKF
     var timestamp: TimeInterval {
         get {
@@ -38,14 +39,15 @@ class Device {
         self.uuid = uuid
         self.name = name
 
+        rawRSSI = RSSI
         kf = IGMKF(P0_00: 1, P0_01: 0, P0_11: 1, sigma: 0.2, beta: 0.1, R: 5)
         kf.update(t: timestamp, z: RSSI)
 
-        refreshCount = Device.MaxCount
+        refreshCount = Device.MaxRefreshCount
     }
 
     func touch() {
-        refreshCount = Device.MaxCount
+        refreshCount = Device.MaxRefreshCount
     }
 
     func refresh() -> State {
@@ -56,6 +58,8 @@ class Device {
     }
 
     func update(timestamp: TimeInterval, RSSI: Double) {
+        touch()
+        rawRSSI = RSSI
         kf.update(t: timestamp, z: RSSI)
     }
 

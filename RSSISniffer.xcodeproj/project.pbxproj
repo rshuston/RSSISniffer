@@ -10,7 +10,6 @@
 		4E1D6FBE24C3B8060095C6EB /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1D6FBD24C3B8060095C6EB /* OptionsViewController.swift */; };
 		4E3E7D3524BF3287009B65F3 /* KalmanFilterPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E7D3424BF3287009B65F3 /* KalmanFilterPerformanceTests.swift */; };
 		4E45B15A24B2BF83006343F3 /* DeviceTrackingManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E45B15924B2BF83006343F3 /* DeviceTrackingManagerTests.swift */; };
-		4E45B15C24B2BFEE006343F3 /* SurveillanceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E45B15B24B2BFEE006343F3 /* SurveillanceManagerTests.swift */; };
 		4E45B15E24B2C044006343F3 /* GMKF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E45B15D24B2C044006343F3 /* GMKF.swift */; };
 		4E45B16024B2C05A006343F3 /* GMKFTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E45B15F24B2C05A006343F3 /* GMKFTests.swift */; };
 		4E4F638F24AC087C002A5C1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F638E24AC087C002A5C1A /* AppDelegate.swift */; };
@@ -45,7 +44,6 @@
 		4E1D6FBD24C3B8060095C6EB /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		4E3E7D3424BF3287009B65F3 /* KalmanFilterPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KalmanFilterPerformanceTests.swift; sourceTree = "<group>"; };
 		4E45B15924B2BF83006343F3 /* DeviceTrackingManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTrackingManagerTests.swift; sourceTree = "<group>"; };
-		4E45B15B24B2BFEE006343F3 /* SurveillanceManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveillanceManagerTests.swift; sourceTree = "<group>"; };
 		4E45B15D24B2C044006343F3 /* GMKF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMKF.swift; sourceTree = "<group>"; };
 		4E45B15F24B2C05A006343F3 /* GMKFTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMKFTests.swift; sourceTree = "<group>"; };
 		4E4F638B24AC087C002A5C1A /* RSSISniffer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSISniffer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,7 +140,6 @@
 				4E3E7D3424BF3287009B65F3 /* KalmanFilterPerformanceTests.swift */,
 				4ED489E724AF74D500C81ACE /* DeviceTests.swift */,
 				4E45B15924B2BF83006343F3 /* DeviceTrackingManagerTests.swift */,
-				4E45B15B24B2BFEE006343F3 /* SurveillanceManagerTests.swift */,
 				4ED489E924AF74D500C81ACE /* Info.plist */,
 			);
 			path = RSSISnifferTests;
@@ -270,7 +267,6 @@
 			files = (
 				4E3E7D3524BF3287009B65F3 /* KalmanFilterPerformanceTests.swift in Sources */,
 				4E45B16024B2C05A006343F3 /* GMKFTests.swift in Sources */,
-				4E45B15C24B2BFEE006343F3 /* SurveillanceManagerTests.swift in Sources */,
 				4ED489E824AF74D500C81ACE /* DeviceTests.swift in Sources */,
 				4E45B15A24B2BF83006343F3 /* DeviceTrackingManagerTests.swift in Sources */,
 				4EF9E9BC24BD3FDF0042613A /* IGMKFTests.swift in Sources */,

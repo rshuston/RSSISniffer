@@ -30,28 +30,26 @@ class DeviceTests: XCTestCase {
     func testTouchMaximizesRefreshCount() throws {
         subject.refreshCount = 0
         subject.touch()
-        XCTAssertEqual(subject.refreshCount, Device.MaxCount)
+        XCTAssertEqual(subject.refreshCount, Device.MaxRefreshCount)
     }
 
     func testFirstRefreshUpdatesCountAndDeclaresDeviceFresh() {
-        XCTAssertEqual(subject.refreshCount, Device.MaxCount)
+        XCTAssertEqual(subject.refreshCount, Device.MaxRefreshCount)
         let state = subject.refresh()
-        XCTAssertEqual(subject.refreshCount, Device.MaxCount - 1)
+        XCTAssertEqual(subject.refreshCount, Device.MaxRefreshCount - 1)
         XCTAssertEqual(state, Device.State.fresh)
     }
 
     func testSecondRefreshUpdatesCountAndDeclaresDeviceFresh() {
-        XCTAssertEqual(subject.refreshCount, Device.MaxCount)
+        XCTAssertEqual(subject.refreshCount, Device.MaxRefreshCount)
         _ = subject.refresh()
         let state = subject.refresh()
-        XCTAssertEqual(subject.refreshCount, Device.MaxCount - 2)
+        XCTAssertEqual(subject.refreshCount, Device.MaxRefreshCount - 2)
         XCTAssertEqual(state, Device.State.fresh)
     }
 
-    func testThirdRefreshUpdatesCountAndDeclaresDeviceStale() {
-        XCTAssertEqual(subject.refreshCount, Device.MaxCount)
-        _ = subject.refresh()
-        _ = subject.refresh()
+    func testLastRefreshUpdatesCountAndDeclaresDeviceStale() {
+        subject.refreshCount = 1
         let state = subject.refresh()
         XCTAssertEqual(subject.refreshCount, 0)
         XCTAssertEqual(state, Device.State.stale)
@@ -64,13 +62,22 @@ class DeviceTests: XCTestCase {
         XCTAssertEqual(state, Device.State.stale)
     }
 
-    func testCanUpdateRSSI() {
+    func testUpdateTouchesRefreshAndDoesRSSIUpdate() {
+        XCTAssertEqual(subject.rawRSSI, DeviceInitialRSSI)
+
+        subject.refreshCount = 1
+
         let newTimeStamp: TimeInterval = DeviceInitialTimeStamp + 1
         let newRSSI: Double = DeviceInitialRSSI - 1
-        let expectedRSSI: Double = -40.276209
+        let expectedFilteredRSSI: Double = -40.276209
+
         subject.update(timestamp: newTimeStamp, RSSI: newRSSI)
+
+        XCTAssertEqual(subject.refreshCount, Device.MaxRefreshCount)
+
+        XCTAssertEqual(subject.rawRSSI, newRSSI)
         XCTAssertEqual(subject.timestamp, newTimeStamp)
-        XCTAssertEqual(subject.RSSI, expectedRSSI, accuracy: 0.000001)
+        XCTAssertEqual(subject.RSSI, expectedFilteredRSSI, accuracy: 0.000001)
     }
 
 }

@@ -68,9 +68,11 @@ extension SurveillanceViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableViewCells.DeviceCellReuseIdentifier)!
         if let device = surveillanceManager?.getDevice(atIndex: indexPath.row) {
-            cell.textLabel?.text = device.name + " ... " + String(format: "%.1f", device.RSSI)
+            cell.textLabel?.text = device.name
+            cell.detailTextLabel?.text = String(format: "%.1f", device.RSSI)
         } else {
-            cell.textLabel?.text = "No devices!"
+            cell.textLabel?.text = ""
+            cell.detailTextLabel?.text = ""
         }
         return cell
     }

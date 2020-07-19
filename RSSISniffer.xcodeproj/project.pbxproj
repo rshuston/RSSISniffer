@@ -41,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E11F06524C4DB6A003655D5 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4E1D6FBD24C3B8060095C6EB /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		4E3E7D3424BF3287009B65F3 /* KalmanFilterPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KalmanFilterPerformanceTests.swift; sourceTree = "<group>"; };
 		4E45B15924B2BF83006343F3 /* DeviceTrackingManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTrackingManagerTests.swift; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				4E4F63A224AC274E002A5C1A /* README.md */,
+				4E11F06524C4DB6A003655D5 /* LICENSE */,
 				4E7CEC6224B28F8C00704B65 /* NOTES.md */,
 				4E4F638D24AC087C002A5C1A /* RSSISniffer */,
 				4ED489E624AF74D500C81ACE /* RSSISnifferTests */,

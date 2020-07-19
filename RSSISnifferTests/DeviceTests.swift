@@ -14,13 +14,13 @@ class DeviceTests: XCTestCase {
 
     let DeviceName: String = "Tri-Corder"
     let DeviceIdentifier: String = "This is me!"
-    let DeviceInitialTimeStamp: TimeInterval = 3.14
-    let DeviceInitialRSSI: Float = -40
+    let DeviceInitialTimeStamp: TimeInterval = 1.0
+    let DeviceInitialRSSI: Double = -40
 
     var subject: Device!
 
     override func setUpWithError() throws {
-        subject = Device(name: DeviceName, uuid: DeviceIdentifier, timestamp: DeviceInitialTimeStamp, RSSI: DeviceInitialRSSI)
+        subject = Device(uuid: DeviceIdentifier, name: DeviceName, timestamp: DeviceInitialTimeStamp, RSSI: DeviceInitialRSSI)
     }
 
     override func tearDownWithError() throws {
@@ -65,11 +65,12 @@ class DeviceTests: XCTestCase {
     }
 
     func testCanUpdateRSSI() {
-        let newTimeStamp: TimeInterval = 6.0223E-23
-        let newRSSI: Float = -42
+        let newTimeStamp: TimeInterval = DeviceInitialTimeStamp + 1
+        let newRSSI: Double = DeviceInitialRSSI - 1
+        let expectedRSSI: Double = -40.276209
         subject.update(timestamp: newTimeStamp, RSSI: newRSSI)
         XCTAssertEqual(subject.timestamp, newTimeStamp)
-        XCTAssertEqual(subject.RSSI, newRSSI)
+        XCTAssertEqual(subject.RSSI, expectedRSSI, accuracy: 0.000001)
     }
 
 }

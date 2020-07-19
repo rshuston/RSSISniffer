@@ -25,6 +25,16 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="c8e-Gh-HMb">
                                 <rect key="frame" x="20" y="114" width="374" height="699"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DeviceCellReuseIdentifier" id="3qz-VR-N53">
+                                        <rect key="frame" x="0.0" y="28" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3qz-VR-N53" id="fNq-UG-lvp">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -40,6 +50,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Surveillance" image="waveform" catalog="system" id="WQ2-yw-61i"/>
                     <connections>
+                        <outlet property="DeviceTableView" destination="c8e-Gh-HMb" id="EcU-J8-oLA"/>
                         <outlet property="StartStopButton" destination="aON-hB-uDr" id="0Nb-2K-nrY"/>
                     </connections>
                 </viewController>
@@ -102,7 +113,7 @@
                                 <rect key="frame" x="340" y="778" width="54" height="30"/>
                                 <state key="normal" title="Dismiss"/>
                                 <connections>
-                                    <segue destination="zjZ-VX-Azw" kind="unwind" unwindAction="homeUnwindActionWithUnwindSegue:" id="Bxk-k2-hHx"/>
+                                    <segue destination="zjZ-VX-Azw" kind="unwind" unwindAction="OptionsUnwindActionWithUnwindSegue:" id="j46-l8-u3W"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4LR-2L-I8T">

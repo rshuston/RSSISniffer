@@ -12,8 +12,9 @@ class DeviceTrackingManager {
 
     static var deviceList: [Device] = []
 
-    public func foo() {
-        
+    func foo() {
     }
+
+    
 
 }

@@ -16,6 +16,10 @@ class OptionsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    // This exists so that we can unwind the presentation segue from the Options Dismiss button
+    @IBAction func OptionsUnwindAction(unwindSegue: UIStoryboardSegue) {
+    }
+
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

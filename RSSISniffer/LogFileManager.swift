@@ -10,7 +10,7 @@ import Foundation
 
 class LogFileManager {
 
-    public static func remove(fileName: String) {
+    static func remove(fileName: String) {
         let documentFileURL = makeDocumentFileURL(fileName: fileName)
         do {
             try FileManager.default.removeItem(at: documentFileURL)
@@ -19,7 +19,7 @@ class LogFileManager {
         }
     }
 
-    public static func clear(fileName: String) {
+    static func clear(fileName: String) {
         let documentFileURL = makeDocumentFileURL(fileName: fileName)
 
         let fm = FileManager.default
@@ -39,7 +39,7 @@ class LogFileManager {
         }
     }
 
-    public static func read(fileName: String) -> String {
+    static func read(fileName: String) -> String {
         var data = ""
 
         let documentFileURL = makeDocumentFileURL(fileName: fileName)
@@ -55,7 +55,7 @@ class LogFileManager {
         return data
     }
 
-    public static func write(fileName: String, text: String) {
+    static func write(fileName: String, text: String) {
         let documentFileURL = makeDocumentFileURL(fileName: fileName)
 
         let fm = FileManager.default
@@ -78,15 +78,15 @@ class LogFileManager {
         }
     }
 
-    public static func writeLn(fileName: String, text: String) {
+    static func writeLn(fileName: String, text: String) {
         write(fileName: fileName, text: text + "\n")
     }
 
-    public static func makeDocumentFileURL(fileName: String) -> URL {
+    static func makeDocumentFileURL(fileName: String) -> URL {
         return LogFileManager.getDocumentDirectoryURL().appendingPathComponent(fileName)
     }
 
-    private static func getDocumentDirectoryURL() -> URL {
+    static func getDocumentDirectoryURL() -> URL {
         let documentDirectoryURL = try! FileManager.default.url(
             for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true
         )

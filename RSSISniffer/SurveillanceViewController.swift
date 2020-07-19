@@ -7,84 +7,41 @@
 //
 
 import UIKit
-import CoreBluetooth
 
 class SurveillanceViewController: UIViewController {
 
     @IBOutlet weak var StartStopButton: UIButton!
+    @IBOutlet weak var DeviceTableView: UITableView!
 
-    let Red_Green_UUID = CBUUID(string: "573548B2-440F-39E4-6F2E-C7ABDE070D96")
-
-    var centralManager: CBCentralManager!
+    var surveillanceManager: SurveillanceManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        centralManager = CBCentralManager(delegate: self, queue: nil)
+        surveillanceManager = SurveillanceManager()
     }
     
     @IBAction func doStartStop(_ sender: Any) {
         if let buttonText = StartStopButton.title(for: .normal) {
             switch buttonText {
             case "Start":
-                startScanningForPeripherals()
+                startSurveillance()
             case "Stop":
-                stopScanningForPeripherals()
+                stopSurveillance()
             default:
                 break
             }
         }
     }
 
-    @IBAction  func homeUnwindAction(unwindSegue: UIStoryboardSegue) {
-    }
-
-    func startScanningForPeripherals() {
-        centralManager.scanForPeripherals(withServices: nil, options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
+    func startSurveillance() {
+        surveillanceManager.startScanningForPeripherals()
         StartStopButton.setTitle("Stop", for: .normal)
     }
 
-    func stopScanningForPeripherals() {
-        centralManager.stopScan()
+    func stopSurveillance() {
+        surveillanceManager.stopScanningForPeripherals()
         StartStopButton.setTitle("Start", for: .normal)
-    }
-
-}
-
-extension SurveillanceViewController: CBCentralManagerDelegate {
-
-    func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        let stateMsg: String
-        switch central.state {
-        case .unknown:
-            stateMsg = "central.state is .unknown"
-        case .resetting:
-            stateMsg = "central.state is .resetting"
-        case .unsupported:
-            stateMsg = "central.state is .unsupported"
-        case .unauthorized:
-            stateMsg = "central.state is .unauthorized"
-        case .poweredOff:
-            stateMsg = "central.state is .poweredOff"
-            stopScanningForPeripherals()
-        case .poweredOn:
-            stateMsg = "central.state is .poweredOn"
-            //startScanningForPeripherals()
-        @unknown default:
-            stateMsg = "central.state default is \(central.state)"
-        }
-        print(stateMsg)
-    }
-
-    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-
-        let uuid = peripheral.identifier.uuidString
-        let name = peripheral.name ?? "?"
-
-        print("peripheral: uuid = \(uuid), RSSI = \(RSSI.stringValue), name = \(name)")
-
-        let csvString = "\(uuid),\(RSSI.stringValue),\(name)"
-        LogFileManager.writeLn(fileName: Constants.Files.DeviceSurveillance, text: csvString)
     }
 
 }

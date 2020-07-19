@@ -179,8 +179,26 @@ def FiveStepArbitraryUpdate():
     print(f't={t:.6f}, z={z:.6f}, x0={x0:.6f}, x1={x1:.6f}, P00={P00:.6f}, P01={P01:.6f}, P10={P10:.6f}, P11={P11:.6f}')
     print()
 
+def ImplementedTwoStepUpdate():
+    print('ImplementedTwoStepUpdate:')
+    filter = IGM_KF(P0=Eye, sigma=0.2, beta=0.1, R=5)
+    t = 1
+    z = -40
+    filter.update(t, z)
+    t = 2
+    z = -41
+    filter.update(t, z)
+    x0 = filter.x0()
+    x1 = filter.x1()
+    P00 = filter.P00()
+    P01 = filter.P01()
+    P10 = filter.P10()
+    P11 = filter.P11()
+    print(f't={t:.6f}, z={z:.6f}, x0={x0:.6f}, x1={x1:.6f}, P00={P00:.6f}, P01={P01:.6f}, P10={P10:.6f}, P11={P11:.6f}')
+    print()
 
 InitialUpdate()
 SimpleTwoStepUpdate()
 SimpleThreeStepUpdate()
 FiveStepArbitraryUpdate()
+ImplementedTwoStepUpdate()

@@ -18,4 +18,8 @@ enum Constants {
         static let OptionsToLogViewSegue = "OptionsToLogViewSegue"
     }
 
+    enum TableViewCells {
+        static let DeviceCellReuseIdentifier = "DeviceCellReuseIdentifier"
+    }
+
 }

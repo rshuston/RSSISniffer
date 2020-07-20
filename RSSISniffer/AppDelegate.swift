@@ -12,11 +12,23 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
 
         print("NSHomeDirectory() = \(NSHomeDirectory())")
 
         return true
+    }
+
+    func applicationWillResignActive(_ application: UIApplication) {
+        print("applicationWillResignActive...")
+        let viewController = UIViewController.frontViewController() as? SurveillanceViewController
+        viewController?.stopSurveillance()
+    }
+
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        print("applicationDidEnterBackground...")
+        // NOTE: For now, we don't allow surveillance in the background
+        let viewController = UIViewController.frontViewController() as? SurveillanceViewController
+        viewController?.stopSurveillance()
     }
 
     // MARK: UISceneSession Lifecycle

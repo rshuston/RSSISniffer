@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E0130C324C51EC300FEA315 /* DeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0130C224C51EC300FEA315 /* DeviceTableViewCell.swift */; };
 		4E1D6FBE24C3B8060095C6EB /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1D6FBD24C3B8060095C6EB /* OptionsViewController.swift */; };
 		4E3E7D3524BF3287009B65F3 /* KalmanFilterPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E7D3424BF3287009B65F3 /* KalmanFilterPerformanceTests.swift */; };
 		4E45B15A24B2BF83006343F3 /* DeviceTrackingManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E45B15924B2BF83006343F3 /* DeviceTrackingManagerTests.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E0130C224C51EC300FEA315 /* DeviceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTableViewCell.swift; sourceTree = "<group>"; };
 		4E11F06524C4DB6A003655D5 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4E1D6FBD24C3B8060095C6EB /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		4E3E7D3424BF3287009B65F3 /* KalmanFilterPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KalmanFilterPerformanceTests.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				4E4F639024AC087C002A5C1A /* SceneDelegate.swift */,
 				4EF1183324B0EA90002D8D0E /* Constants.swift */,
 				4E4F639224AC087C002A5C1A /* SurveillanceViewController.swift */,
+				4E0130C224C51EC300FEA315 /* DeviceTableViewCell.swift */,
 				4E1D6FBD24C3B8060095C6EB /* OptionsViewController.swift */,
 				4EF1183124B0C50E002D8D0E /* LogFileViewController.swift */,
 				4ED489DD24AF710600C81ACE /* SurveillanceManager.swift */,
@@ -250,6 +253,7 @@
 			files = (
 				4E4F639324AC087C002A5C1A /* SurveillanceViewController.swift in Sources */,
 				4E4F638F24AC087C002A5C1A /* AppDelegate.swift in Sources */,
+				4E0130C324C51EC300FEA315 /* DeviceTableViewCell.swift in Sources */,
 				4ED489E024AF717000C81ACE /* DeviceTrackingManager.swift in Sources */,
 				4EF9E9BA24BD3F960042613A /* IGMKF.swift in Sources */,
 				4E45B15E24B2C044006343F3 /* GMKF.swift in Sources */,

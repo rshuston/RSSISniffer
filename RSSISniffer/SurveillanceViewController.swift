@@ -24,6 +24,11 @@ class SurveillanceViewController: UIViewController {
         // UIKit won't create the empty rows when the table has a footer view
         DeviceTableView.tableFooterView = UIView(frame: CGRect.zero)
 
+        // iOS Development 101:
+        // Do this to allow cell height to autosize
+        DeviceTableView.rowHeight = UITableView.automaticDimension
+        DeviceTableView.estimatedRowHeight = 200
+
         surveillanceManager = SurveillanceManager(dataChangeNotificationHandler: dataChangeNotificationHandler)
     }
 
@@ -66,13 +71,17 @@ extension SurveillanceViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableViewCells.DeviceCellReuseIdentifier)!
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableViewCells.DeviceCellReuseIdentifier) as! DeviceTableViewCell
         if let device = surveillanceManager?.getDevice(atIndex: indexPath.row) {
-            cell.textLabel?.text = device.name
-            cell.detailTextLabel?.text = String(format: "%.1f", device.RSSI)
+            cell.Name.text = device.name
+            cell.UUID.text = device.uuid
+            cell.FilteredRSSI.text = String(format: "F: %.1f", device.RSSI)
+            cell.RawRSSI.text = String(format: "R: %.1f", device.rawRSSI)
         } else {
-            cell.textLabel?.text = ""
-            cell.detailTextLabel?.text = ""
+            cell.Name.text = ""
+            cell.UUID.text = ""
+            cell.FilteredRSSI.text = ""
+            cell.RawRSSI.text = ""
         }
         return cell
     }

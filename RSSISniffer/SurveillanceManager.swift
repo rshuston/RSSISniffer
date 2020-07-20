@@ -28,7 +28,6 @@ class SurveillanceManager: NSObject {
         centralManager = CBCentralManager(delegate: self, queue: nil)
         deviceTrackingManager = DeviceTrackingManager()
 
-        //
         surveillanceStaleCheckTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: surveillanceTask)
     }
 
@@ -106,13 +105,10 @@ extension SurveillanceManager: CBCentralManagerDelegate {
         // Run device tracking operations on main thread to avoid multi-thread data operations
         DispatchQueue.main.async {
             self.deviceTrackingManager.track(uuid: uuid, name: name, timestamp: timestamp, RSSI: RSSI.doubleValue)
-            self.dataChangeNotificationHandler?()
         }
 
         let csvString = "\(uuid),\(RSSI.stringValue),\(name)"
         LogFileManager.writeLn(fileName: Constants.Files.DeviceSurveillance, text: csvString)
-
-        print("peripheral: uuid = \(uuid), RSSI = \(RSSI.stringValue), name = \(name)")
     }
 
 }

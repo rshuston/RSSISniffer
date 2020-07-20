@@ -113,7 +113,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5r-fn-Nt2">
-                                <rect key="frame" x="173" y="64" width="68" height="30"/>
+                                <rect key="frame" x="173" y="433" width="68" height="30"/>
                                 <state key="normal" title="Show Log"/>
                                 <connections>
                                     <segue destination="B3V-6a-0Bt" kind="presentation" identifier="OptionsToLogViewSegue" id="bCf-z8-rTQ"/>
@@ -122,7 +122,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="j5r-fn-Nt2" firstAttribute="top" secondItem="pea-CF-aei" secondAttribute="top" constant="20" id="VZh-6F-hel"/>
+                            <constraint firstItem="j5r-fn-Nt2" firstAttribute="centerY" secondItem="Ypa-DH-bf1" secondAttribute="centerY" id="0xc-xq-JNf"/>
                             <constraint firstItem="j5r-fn-Nt2" firstAttribute="centerX" secondItem="Ypa-DH-bf1" secondAttribute="centerX" id="lfH-Le-Cpv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pea-CF-aei"/>

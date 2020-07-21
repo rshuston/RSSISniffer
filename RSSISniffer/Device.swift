@@ -15,7 +15,7 @@ class Device {
         case fresh
     }
 
-    static let MaxRefreshCount: UInt16 = 3  // Number of successive refreshes to turn stale
+    static let MaxRefreshCount: UInt16 = 5  // Number of successive refreshes to turn stale
 
     let uuid: String
     let name: String

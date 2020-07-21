@@ -41,8 +41,7 @@ class DeviceTests: XCTestCase {
     }
 
     func testSecondRefreshUpdatesCountAndDeclaresDeviceFresh() {
-        XCTAssertEqual(subject.refreshCount, Device.MaxRefreshCount)
-        _ = subject.refresh()
+        subject.refreshCount = Device.MaxRefreshCount - 1
         let state = subject.refresh()
         XCTAssertEqual(subject.refreshCount, Device.MaxRefreshCount - 2)
         XCTAssertEqual(state, Device.State.fresh)

@@ -28,14 +28,19 @@
         \huge
         A Kalman Filter for Bluetooth RSSI Tracking
         
-        \vspace{36pt}
+        \vspace{48pt}
 
         \large
         Robert S. Huston
 
-        \vspace{36pt}
+        \vspace{12pt}
         
         \today
+
+        \vspace{12pt}
+
+        Copyright \copyright \ 2020 Pinpoint Dynamics, LLC. \\
+        All rights reserved.
         
         \vfill
     \end{center}
@@ -68,9 +73,10 @@ model.
 \section{Introduction}
 
 Two fundamental architectures are representative of the reception of digital signals:
-direct-conversion and low-IF. The basic direct-conversion architecture is shown in
-Figure \ref{fig:rx-arch-direct}. The direct-conversion architecture supplies the baseband
-I and Q digital samples directly to the DSP.
+direct-conversion and low-IF \cite{CMOSLowIFRX2002} \cite{BluetoothWiFiRX2004}. The basic
+direct-conversion architecture is shown in Figure \ref{fig:rx-arch-direct}. The
+direct-conversion architecture supplies the baseband I and Q digital samples directly to
+the DSP.
 
 \begin{figure}[ht]
     \centering
@@ -91,20 +97,20 @@ architecture supplies the IF digital samples to the DSP.
 
 While there are various engineering reasons for choosing one architecture over the other,
 the main point to realize is that the RSSI measurement is typically related to the AGC
-levels of the receiver. Because the AGC is constantly adjusting its gain in order to
-track the incoming signal, the RSSI measurement as relayed by the signal processor will
-fluctuate. In addition, the quality of the RSSI signal is highly dependent on both the
-AGC operation as well as the processing strategies and algorithms implemented in the DSP.
-Of course, the position of the radio antenna itself also has an effect on signal quality
-due to shadowing and polarization, and also due to multipath signals imposed by the
-physical layout of an indoor environment.
+levels of the receiver  \cite{TIDN505RSSI2010}. Because the AGC is constantly adjusting
+its gain in order to track the incoming signal, the RSSI measurement as relayed by the
+signal processor will fluctuate. In addition, the quality of the RSSI measurement is
+highly dependent on both the AGC operation as well as the processing strategies and
+algorithms implemented in the DSP. Of course, the position of the radio antenna itself
+also has an effect on measurement quality due to shadowing and polarization, and also due
+to multipath signals imposed by the physical layout of an indoor environment.
 
 Many Bluetooth receiver architectures have been implemented in the mobile device industry.
 The reality is that Bluetooth RSSI measurements as acquired by a mobile device can be
 highly erratic and can be quite unreliable in their raw form. The application of a filter
 to refine the raw measurements is certainly warranted. In this paper, we explore the use
-of three Kalman filter models for refining the RSSI measurement of a mobile device into
-a more meaningful value.
+of three Kalman filter models for refining the RSSI measurement of a mobile device into a
+more meaningful value.
 
 We first explore the use a Gauss-Markov process to model the RSSI acquisition behavior of
 a Bluetooth device signal as seen by the mobile device. We choose this model because its
@@ -841,7 +847,7 @@ The discrete-time state transition matrix is
 The process mean-square values for the process covariance matrix are
 
 \begin{equation}
-    E[x_1 x_1] = \frac{2 \sigma^2}{\beta}
+    E[w_1 w_1] = \frac{2 \sigma^2}{\beta}
         \left [
             \tau_k - \frac{2}{\beta} \left ( 1 - e^{- \beta \tau_k} \right )
                    + \frac{1}{2 \beta} \left ( 1 - e^{-2 \beta \tau_k} \right )
@@ -850,7 +856,7 @@ The process mean-square values for the process covariance matrix are
 \end{equation}
 
 \begin{equation}
-    E[x_1 x_2] = 2 \sigma^2
+    E[w_1 w_2] = 2 \sigma^2
         \left [
             \frac{1}{\beta} \left ( 1 - e^{- \beta \tau_k} \right )
             - \frac{1}{2 \beta} \left ( 1 - e^{-2 \beta \tau_k} \right )
@@ -859,7 +865,7 @@ The process mean-square values for the process covariance matrix are
 \end{equation}
 
 \begin{equation}
-    E[x_2 x_2] = \sigma^2 \left ( 1 - e^{-2 \beta \tau_k} \right )
+    E[w_2 w_2] = \sigma^2 \left ( 1 - e^{-2 \beta \tau_k} \right )
     \label{eq:IGM-Ex2x2}
 \end{equation}
 
@@ -868,9 +874,9 @@ and so the process covariance matrix is
 \begin{equation}
     \mathbf{Q}_k = 
     \begin{bmatrix}
-    E[x_1 x_1]  & \phantom{m} &  E[x_1 x_2] \\
+    E[w_1 w_1]  & \phantom{m} &  E[w_1 w_2] \\
     \phantom{m} \\
-    E[x_1 x_2]  & \phantom{m} &  E[x_2 x_2]
+    E[w_1 w_2]  & \phantom{m} &  E[w_2 w_2]
     \end{bmatrix}
     \label{eq:IGM-process-Q}
 \end{equation}
@@ -1099,13 +1105,168 @@ You can access the source for this project from my GitHub repo: \\
 
 %-------------------------------------------------------------------------------
 %
-% References
+% Appendix A - IGM KF, Non-Matrix Realization
+%
+%-------------------------------------------------------------------------------
+
+\clearpage
+\section{Appendix A - IGM, KF Non-Matrix Realization}
+
+Define the discrete-time difference to be $\tau_k = t_k - t_{k-1}$. The discrete-time
+formulation for the integrated Gauss-Markov system is
+
+\begin{equation*}
+    \begin{bmatrix}
+    x_0 \\
+    \phantom{m} \\
+    x_1
+    \end{bmatrix}_k
+    =
+    \begin{bmatrix}
+    \phi_{00} & \phi_{01} \\
+    \phantom{m} \\
+    \phi_{10} & \phi_{11}
+    \end{bmatrix}_k
+    \begin{bmatrix}
+    x_0 \\
+    \phantom{m} \\
+    x_1
+    \end{bmatrix}_{k-1}
+    +
+    \begin{bmatrix}
+    w_0 \\
+    \phantom{m} \\
+    w_1
+    \end{bmatrix}_{k}
+\end{equation*}
+
+\begin{equation*}
+    z_k = 
+    \begin{bmatrix}
+    1 & & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+    x_0 \\
+    \phantom{m} \\
+    x_1
+    \end{bmatrix}_k
+    +
+    v_k
+\end{equation*}
+
+where the state transition matrix is
+
+\begin{equation*}
+    \begin{bmatrix}
+    \phi_{00} & \phi_{01} \\
+    \phantom{m} \\
+    \phi_{10} & \phi_{11}
+    \end{bmatrix}_k
+    = 
+    \begin{bmatrix}
+    1  & \phantom{m} &  \dfrac{1}{\beta} \left ( 1 - e^{- \beta \tau_k} \right ) \\
+    \phantom{m} \\
+    0  & \phantom{m} &  e^{- \beta \tau_k}
+    \end{bmatrix}
+\end{equation*}
+
+and where $\mathbf{w}_k$ is a white noise sequence representing process noise with known
+covariance
+
+\begin{equation*}
+    E[\mathbf{w}_k \mathbf{w}_k^T] = \mathbf{Q}_k
+\end{equation*}
+
+and where $v_k$ is a scalar white noise sequence representing measurement error with
+known measurement error covariance
+
+\begin{equation*}
+    E[v_k^2] = r_k
+\end{equation*}
+
+The process covariance matrix, $\mathbf{Q}_k$, is
+
+\begin{equation*}
+    \mathbf{Q}_k = 
+    \begin{bmatrix}
+    q_{00}  & \phantom{m} &  q_{01} \\
+    \phantom{m} \\
+    q_{01}  & \phantom{m} &  q_{11}
+    \end{bmatrix}
+\end{equation*}
+
+where
+
+\begin{equation*}
+    q_{00} = \frac{2 \sigma^2}{\beta}
+        \left [
+            \tau_k - \frac{2}{\beta} \left ( 1 - e^{- \beta \tau_k} \right )
+                   + \frac{1}{2 \beta} \left ( 1 - e^{-2 \beta \tau_k} \right )
+        \right ]
+\end{equation*}
+
+\begin{equation*}
+    q_{01} = 2 \sigma^2
+        \left [
+            \frac{1}{\beta} \left ( 1 - e^{- \beta \tau_k} \right )
+            - \frac{1}{2 \beta} \left ( 1 - e^{-2 \beta \tau_k} \right )
+        \right ]
+\end{equation*}
+
+\begin{equation*}
+    q_{11} = \sigma^2 \left ( 1 - e^{-2 \beta \tau_k} \right )
+\end{equation*}
+
+Taking advantage of the symmetry of the covariance matrices and that $\phi_{10} = 0$,
+the non-matrix implementation of the integrated Gauss-Markov Kalman filter is as follows
+(the $k$ subscripts have been omitted for readability):
+
+Prediction:
+
+\begin{equation*}
+    \begin{aligned}
+    x_0^- &= \phi_{00} x_0 + \phi_{01} x_1 \\
+    x_1^- &= \phi_{11} x_1 \\
+    \phantom{m} \\
+    p_{00}^- &= (\phi_{00} p_{00} + \phi_{01} p_{01}) \phi_{00} + (\phi_{00} p_{01} + \phi_{01} p_{11}) \phi_{01} + q_{00} \\
+    p_{01}^- &= (\phi_{00} p_{01} + \phi_{01} p_{11}) \phi_{11} + q_{01} \\
+    p_{11}^- &= \phi_{11} p_{11} \phi_{11} + q_{11}
+    \end{aligned}
+\end{equation*}
+
+Kalman gain:
+
+\begin{equation*}
+    \begin{aligned}
+    k_0 &= \frac{p_{00}^-}{p_{00}^- + r} \\
+    k_1 &= \frac{p_{01}^-}{p_{00}^- + r}
+    \end{aligned}
+\end{equation*}
+
+Correction:
+
+\begin{equation*}
+    \begin{aligned}
+    x_0^+ &= x_0^- + k_0 (z - x_0^-) \\
+    x_1^+ &= x_1^- + k_1 (z - x_0^-) \\
+    \phantom{m} \\
+    p_{00}^+ &= (1 - k_0)p_{00}^- \\
+    p_{01}^+ &= (1 - k_0)p_{01}^- \\
+    p_{11}^+ &= (- k_1)p_{01}^- + p_{11}^-
+    \end{aligned}
+\end{equation*}
+
+
+
+%-------------------------------------------------------------------------------
+%
+% Appendix B - References
 %
 %-------------------------------------------------------------------------------
 
 \clearpage
 
-\renewcommand{\refname}{General References}
+\renewcommand{\refname}{Appendix B - General References}
 
 \begin{thebibliography}{9}
 

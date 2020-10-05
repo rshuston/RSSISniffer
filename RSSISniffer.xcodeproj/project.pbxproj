@@ -26,6 +26,7 @@
 		4ED489E824AF74D500C81ACE /* DeviceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED489E724AF74D500C81ACE /* DeviceTests.swift */; };
 		4ED489F024AF869300C81ACE /* LogFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED489EF24AF869300C81ACE /* LogFileManager.swift */; };
 		4ED489F224AF90B300C81ACE /* LogFileManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED489F124AF90B300C81ACE /* LogFileManagerTests.swift */; };
+		4ED5FDA6252A6AE000B49C87 /* UIViewController+ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5FDA5252A6AE000B49C87 /* UIViewController+ExtensionTests.swift */; };
 		4EF1183224B0C50E002D8D0E /* LogFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1183124B0C50E002D8D0E /* LogFileViewController.swift */; };
 		4EF1183424B0EA90002D8D0E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1183324B0EA90002D8D0E /* Constants.swift */; };
 		4EF9E9BA24BD3F960042613A /* IGMKF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF9E9B924BD3F960042613A /* IGMKF.swift */; };
@@ -69,6 +70,7 @@
 		4ED489E924AF74D500C81ACE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4ED489EF24AF869300C81ACE /* LogFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFileManager.swift; sourceTree = "<group>"; };
 		4ED489F124AF90B300C81ACE /* LogFileManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFileManagerTests.swift; sourceTree = "<group>"; };
+		4ED5FDA5252A6AE000B49C87 /* UIViewController+ExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ExtensionTests.swift"; sourceTree = "<group>"; };
 		4EF1183124B0C50E002D8D0E /* LogFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFileViewController.swift; sourceTree = "<group>"; };
 		4EF1183324B0EA90002D8D0E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4EF9E9B924BD3F960042613A /* IGMKF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGMKF.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 		4ED489E624AF74D500C81ACE /* RSSISnifferTests */ = {
 			isa = PBXGroup;
 			children = (
+				4ED5FDA5252A6AE000B49C87 /* UIViewController+ExtensionTests.swift */,
 				4ED489F124AF90B300C81ACE /* LogFileManagerTests.swift */,
 				4E45B15F24B2C05A006343F3 /* GMKFTests.swift */,
 				4EF9E9BB24BD3FDF0042613A /* IGMKFTests.swift */,
@@ -278,6 +281,7 @@
 				4E3E7D3524BF3287009B65F3 /* KalmanFilterPerformanceTests.swift in Sources */,
 				4E45B16024B2C05A006343F3 /* GMKFTests.swift in Sources */,
 				4ED489E824AF74D500C81ACE /* DeviceTests.swift in Sources */,
+				4ED5FDA6252A6AE000B49C87 /* UIViewController+ExtensionTests.swift in Sources */,
 				4E45B15A24B2BF83006343F3 /* DeviceTrackingManagerTests.swift in Sources */,
 				4EF9E9BC24BD3FDF0042613A /* IGMKFTests.swift in Sources */,
 				4ED489F224AF90B300C81ACE /* LogFileManagerTests.swift in Sources */,

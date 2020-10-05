@@ -3,19 +3,19 @@
 //  RSSISniffer
 //
 //  Created by Robert Huston on 7/20/20.
-//  Copyright © 2020 Pinpoint Dynamics. All rights reserved.
+//  Copyright © 2016, 2020 Pinpoint Dynamics. All rights reserved.
 //
 
 import UIKit
 
 public extension UIViewController {
 
-    // Find the front view controller by traversing the view controller hierachy
+    // Find the front view controller by traversing the view controller hierarchy
     class func frontViewController() -> UIViewController? {
         return _findBestViewControllerFrom(UIApplication.shared.windows[0].rootViewController)
     }
 
-    // Private recusive search function to find best front view controller
+    // Private recursive search function to find best front view controller
     fileprivate class func _findBestViewControllerFrom(_ viewController: UIViewController?) -> UIViewController? {
         var bestViewController: UIViewController?
 

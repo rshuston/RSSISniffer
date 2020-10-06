@@ -12,7 +12,7 @@ public extension UIViewController {
 
     // Find the front view controller by traversing the view controller hierarchy
     class func frontViewController() -> UIViewController? {
-        return _findBestViewControllerFrom(UIApplication.shared.windows[0].rootViewController)
+        return _findBestViewControllerFrom(UIApplication.shared.windows.last?.rootViewController)
     }
 
     // Private recursive search function to find best front view controller

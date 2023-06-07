@@ -44,3 +44,7 @@ xcuserdata/
 # Carthage/Checkouts
 
 Carthage/Build/
+
+
+# Python VENV
+venv/
